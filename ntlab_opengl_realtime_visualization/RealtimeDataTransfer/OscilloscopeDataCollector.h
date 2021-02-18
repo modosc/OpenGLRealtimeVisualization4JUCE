@@ -59,9 +59,9 @@ namespace ntlab
          * Specify an identifier extension to map the DataCollector to the corresponding target.
          * The Identifier will automatically be prepended by "Oscilloscope"
          */
-        OscilloscopeDataCollector (const juce::String identifierExtension = "1") : DataCollector ("Oscilloscope" + identifierExtension) {};
+        OscilloscopeDataCollector (const juce::String identifierExtension = "1") : DataCollector ("Oscilloscope" + identifierExtension) {}
 
-        virtual ~OscilloscopeDataCollector () {};
+        virtual ~OscilloscopeDataCollector () override {} 
 
         /**
          * Sets the number of channels displayed by the oscilloscope. Keep in mind that the next call to

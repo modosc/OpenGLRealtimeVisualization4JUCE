@@ -27,7 +27,10 @@ SOFTWARE.
 
 namespace ntlab
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshadow-field"
     void OscilloscopeDataCollector::setChannels (int numChannels, juce::StringArray channelNames)
+#pragma clang diagnostic pop
     {
         this->numChannels = numChannels;
         this->channelNames = channelNames;

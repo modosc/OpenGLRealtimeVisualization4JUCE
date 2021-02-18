@@ -46,7 +46,7 @@ namespace ntlab
 
     public:
 
-        virtual ~RealtimeDataSink () {};
+        virtual ~RealtimeDataSink () {}
 
         /**
          * Adds a data channel through which a certain dataCollector can send data to a visualisation target. The target

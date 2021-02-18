@@ -30,10 +30,10 @@ namespace ntlab
 
     SpectralDataCollector::SpectralDataCollector (const juce::String identifierExtension) : DataCollector ("SpectralAnalyzer" + identifierExtension) {}
 
-    void SpectralDataCollector::setChannels (int numChannels, juce::StringArray &channelNames)
+    void SpectralDataCollector::setChannels (int _numChannels, juce::StringArray &_channelNames)
     {
-        this->numChannels = numChannels;
-        this->channelNames = channelNames;
+        this->numChannels = _numChannels;
+        this->channelNames = _channelNames;
 
         updateGUIChannels();
         recalculateMemory();

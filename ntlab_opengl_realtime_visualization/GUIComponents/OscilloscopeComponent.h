@@ -57,7 +57,7 @@ namespace ntlab
          */
         OscilloscopeComponent (const juce::String identifierExtension, WindowOpenGLContext& windowOpenGlContext, juce::UndoManager* undoManager = nullptr);
 
-        ~OscilloscopeComponent();
+        ~OscilloscopeComponent() override;
 
         /**
          * Set the time frame viewed by the Oscilloscope. This impacts the number of samples collected before a GUI
@@ -111,7 +111,7 @@ namespace ntlab
         {
         public:
             SettingsComponent (juce::ValueTree& valueTree, juce::UndoManager* um);
-            ~SettingsComponent();
+            ~SettingsComponent() override;
             void paint (juce::Graphics& g) override;
             void resized() override;
 

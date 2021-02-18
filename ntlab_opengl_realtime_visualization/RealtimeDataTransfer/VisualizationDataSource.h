@@ -47,15 +47,15 @@ namespace ntlab
     public:
 
         /** The identifier string must be the same on the collector side to map both instances */
-        VisualizationTarget (const juce::String& identifier, juce::UndoManager* um = nullptr) : id (identifier), valueTree (id), undoManager (um) {};
+        VisualizationTarget (const juce::String& identifier, juce::UndoManager* um = nullptr) : id (identifier), valueTree (id), undoManager (um) {}
 
-        virtual ~VisualizationTarget () {};
+        virtual ~VisualizationTarget () {}
 
         /** Should only be called by the source */
-        void setDataSource (VisualizationDataSource *newDataSource) {dataSource = newDataSource; };
+        void setDataSource (VisualizationDataSource *newDataSource) {dataSource = newDataSource; }
 
         /** This can be used to send settings from the DataCollector to the target*/
-        virtual void applySettingFromCollector (const juce::String& setting, const juce::var& value) {};
+        virtual void applySettingFromCollector ([[maybe_unused]] const juce::String& setting, [[maybe_unused]] const juce::var& value) {}
 
         /** Should only be set by the source */
         int targetIdx = -1;
@@ -86,7 +86,7 @@ namespace ntlab
         /** Must be called to connect a target to this source. Usually, this is done once at setup time*/
         virtual void registerVisualizationTarget (VisualizationTarget& visualizationTargetToAdd) = 0;
 
-        virtual ~VisualizationDataSource () {};
+        virtual ~VisualizationDataSource () {}
 
         /**
          * Called to start reading the most recent data delivered by the collector. Call finishedReading as soon as

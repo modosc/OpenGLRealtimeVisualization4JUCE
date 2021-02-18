@@ -47,13 +47,13 @@ namespace ntlab
             jassert (array[0].containsOnly ("-.0123456789"));
             jassert (array[1].containsOnly ("-.0123456789"));
 
-            range.setStart (array[0].getDoubleValue());
-            range.setEnd   (array[1].getDoubleValue());
+            range.setStart (static_cast<float>(array[0].getDoubleValue()));
+            range.setEnd   (static_cast<float>(array[1].getDoubleValue()));
         }
 
         operator juce::String()           {return toString(); }
         operator juce::var()              {return toString(); }
-        operator juce::Range<FloatType>() {return range; };
+        operator juce::Range<FloatType>() {return range; }
 
         juce::Range<FloatType> range;
     };

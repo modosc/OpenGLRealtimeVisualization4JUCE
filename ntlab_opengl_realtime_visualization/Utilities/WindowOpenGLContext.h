@@ -33,7 +33,7 @@ namespace ntlab
     public:
         WindowOpenGLContext();
 
-        ~WindowOpenGLContext();
+        ~WindowOpenGLContext() override;
 
         void setTopLevelParentComponent (juce::Component& topLevelComponent);
 

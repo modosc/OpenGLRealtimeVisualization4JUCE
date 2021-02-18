@@ -82,7 +82,7 @@ namespace ntlab
             auto numberAsStdString = os.str();
 
             juce::String returnString;
-            returnString.preallocateBytes (overallNumberOfDigits + 2);
+            returnString.preallocateBytes (static_cast<size_t>(overallNumberOfDigits + 2));
 
             int numPlacesAppended = 0;
             bool hasDecimalDot = false;

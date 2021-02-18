@@ -68,7 +68,7 @@ namespace ntlab
          */
         SpectralAnalyzerComponent (const juce::String identifierExtension, WindowOpenGLContext& windowOpenGlContext, juce::UndoManager* undoManager = nullptr);
 
-        ~SpectralAnalyzerComponent();
+        ~SpectralAnalyzerComponent() override;
 
         /** Sets the order of the underlying FFT. Should be > 3 */
         void setFFTOrder (int newOrder);

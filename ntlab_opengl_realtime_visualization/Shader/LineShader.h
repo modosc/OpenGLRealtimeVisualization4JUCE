@@ -41,8 +41,8 @@ namespace ntlab
 
         /** A set of scaling values needed when using the shader-based log scale conversion */
         struct LogScaling {
-            LogScaling() : value (1.0f) {};
-            LogScaling (float scalingValue) : value (scalingValue) {};
+            LogScaling() : value (1.0f) {}
+            LogScaling (float scalingValue) : value (scalingValue) {}
             operator const float() const {return value; }
 
             static constexpr float base10    = 0.434294481903252f; // 1 / log (10)
@@ -67,7 +67,7 @@ namespace ntlab
             {
                 if (coord2d.get() != nullptr)
                 {
-                    openGLContext.extensions.glVertexAttribPointer (coord2d->attributeID, 3, GL_FLOAT, GL_FALSE, sizeof (juce::Point<float>), 0);
+                    openGLContext.extensions.glVertexAttribPointer (coord2d->attributeID, 3, GL_FLOAT, GL_FALSE, sizeof (juce::Point<float>), nullptr);
                     openGLContext.extensions.glEnableVertexAttribArray (coord2d->attributeID);
                 }
             }
@@ -228,7 +228,7 @@ namespace ntlab
         std::unique_ptr<Uniforms>   uniforms;
         std::unique_ptr<Attributes> attributes;
 
-        LineShader2D (juce::OpenGLContext &context) : juce::OpenGLShaderProgram (context) {};
+        LineShader2D (juce::OpenGLContext &context) : juce::OpenGLShaderProgram (context) {}
 
         static const juce::String vertex;
         static const juce::String fragment;

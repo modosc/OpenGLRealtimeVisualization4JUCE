@@ -60,7 +60,7 @@ namespace ntlab
          */
         SpectralDataCollector (const juce::String identifierExtension);
 
-        virtual ~SpectralDataCollector() {};
+        virtual ~SpectralDataCollector() override {}
 
         /**
          * Sets the number of channels displayed by the spectral analyzer. Keep in mind that the next call to

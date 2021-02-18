@@ -31,8 +31,10 @@ namespace ntlab
     const juce::Identifier OscilloscopeComponent::parameterGainLinear       ("gainLinear");
     const juce::Identifier OscilloscopeComponent::parameterTimeViewed       ("timeViewed");
     const juce::Identifier OscilloscopeComponent::parameterEnableTriggering ("enableTriggering");
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshadow-field"
     OscilloscopeComponent::OscilloscopeComponent (const juce::String identifierExtension, WindowOpenGLContext& windowOpenGlContext, juce::UndoManager* undoManager)
+#pragma clang diagnostic pop
     : VisualizationTarget ("Oscilloscope" + identifierExtension, undoManager),
       Plot2D (true, windowOpenGlContext)
     {
@@ -42,8 +44,10 @@ namespace ntlab
         valueTree.setProperty (parameterEnableTriggering, false, undoManager);
 
         setBackgroundColour (juce::Colours::darkturquoise, false);
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshadow-field"
         automaticLineColours = [] (int numChannels)
+#pragma clang diagnostic pop
         {
             juce::Array<juce::Colour> onlyGreen;
             for (int i = 0; i < numChannels; ++i)
@@ -51,7 +55,6 @@ namespace ntlab
 
             return onlyGreen;
         };
-
         setGridProperties (10, 8, juce::Colours::darkgrey);
         enableXAxisTicks (true, "sec");
         enableLegend (true, ntlab::Plot2D::bottomRight, false, 0.0f);
@@ -237,10 +240,10 @@ namespace ntlab
         }
     }
 
-    void OscilloscopeComponent::valueTreeChildAdded (juce::ValueTree &parentTree, juce::ValueTree &childWhichHasBeenAdded) {}
-    void OscilloscopeComponent::valueTreeChildRemoved (juce::ValueTree &parentTree, juce::ValueTree &childWhichHasBeenRemoved, int indexFromWhichChildWasRemoved) {}
-    void OscilloscopeComponent::valueTreeChildOrderChanged (juce::ValueTree &parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex) {}
-    void OscilloscopeComponent::valueTreeParentChanged (juce::ValueTree &treeWhoseParentHasChanged) {}
+    void OscilloscopeComponent::valueTreeChildAdded (juce::ValueTree &, juce::ValueTree &) {}
+    void OscilloscopeComponent::valueTreeChildRemoved (juce::ValueTree &, juce::ValueTree &, int ) {}
+    void OscilloscopeComponent::valueTreeChildOrderChanged (juce::ValueTree &, int , int ) {}
+    void OscilloscopeComponent::valueTreeParentChanged (juce::ValueTree &) {}
 
     void OscilloscopeComponent::updateChannelInformation ()
     {
@@ -265,7 +268,7 @@ namespace ntlab
         addAndMakeVisible (gainSlider);
         addAndMakeVisible (enableTriggeringButton);
 
-        timebaseSlider.setRange (0.001, 0.1);
+        timebaseSlider.setRange (0.001, 10.0);
         gainSlider.    setRange (0.0,  30.0);
 
         timebaseSlider.setSliderStyle (juce::Slider::SliderStyle::Rotary);
@@ -355,9 +358,9 @@ namespace ntlab
         }
     }
 
-    void OscilloscopeComponent::SettingsComponent::valueTreeChildAdded (juce::ValueTree &parentTree, juce::ValueTree &childWhichHasBeenAdded) {}
-    void OscilloscopeComponent::SettingsComponent::valueTreeChildRemoved (juce::ValueTree &parentTree, juce::ValueTree &childWhichHasBeenRemoved, int indexFromWhichChildWasRemoved) {}
-    void OscilloscopeComponent::SettingsComponent::valueTreeChildOrderChanged (juce::ValueTree &parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex) {}
-    void OscilloscopeComponent::SettingsComponent::valueTreeParentChanged (juce::ValueTree &treeWhoseParentHasChanged) {}
+    void OscilloscopeComponent::SettingsComponent::valueTreeChildAdded (juce::ValueTree &, juce::ValueTree &) {}
+    void OscilloscopeComponent::SettingsComponent::valueTreeChildRemoved (juce::ValueTree &, juce::ValueTree &, int ) {}
+    void OscilloscopeComponent::SettingsComponent::valueTreeChildOrderChanged (juce::ValueTree &, int , int ) {}
+    void OscilloscopeComponent::SettingsComponent::valueTreeParentChanged (juce::ValueTree &) {}
 }
 

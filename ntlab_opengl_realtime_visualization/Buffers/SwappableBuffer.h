@@ -189,17 +189,17 @@ namespace ntlab
             }
 
             /** Returns the read pointer Array held by this instance */
-            const T **get() {return swapableBuffer.readChannels->getRawDataPointer(); };
+            const T **get() {return swapableBuffer.readChannels->getRawDataPointer(); }
 
             /** Access an individual channel in the read buffer held by this instance */
-            const T *operator[] (int idx) {return (*swapableBuffer.readChannels)[idx]; };
+            const T *operator[] (int idx) {return (*swapableBuffer.readChannels)[idx]; }
 
             /** Access a single sample held by the buffer */
-            const T &getSample (int channel, int sample) {return (*swapableBuffer.readChannels)[channel][sample]; };
+            const T &getSample (int channel, int sample) {return (*swapableBuffer.readChannels)[channel][sample]; }
 
         private:
             SwappableBuffer &swapableBuffer;
-            ScopedReadBufferPtr (SwappableBuffer &s) : swapableBuffer (s) {};
+            ScopedReadBufferPtr (SwappableBuffer &s) : swapableBuffer (s) {}
         };
 
         /**

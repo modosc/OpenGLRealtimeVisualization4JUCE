@@ -45,18 +45,18 @@ namespace ntlab
     public:
 
         /** The identifier string must be the same on the visualization side to map both instances */
-        DataCollector (const juce::String& idenfifier) : id (idenfifier) {};
+        DataCollector (const juce::String& idenfifier) : id (idenfifier) {}
 
-        virtual ~DataCollector () {};
+        virtual ~DataCollector () {}
 
         /** This can be used to send settings from the target to the DataCollector */
-        virtual void applySettingFromTarget (const juce::String& setting, const juce::var& value) {};
+        virtual void applySettingFromTarget ([[maybe_unused]] const juce::String& setting, [[maybe_unused]] const juce::var& value) {}
 
         /** Returns immediately and causes the memory blocks managed by this class to resize before the next usage */
         void resizeMemoryBlock (size_t newSizeInBytes)
         {
             expectedBlockSize = newSizeInBytes;
-        };
+        }
 
         /** Called to begin writing to a memory block. It won't be swapped until finishedWriting was called */
         juce::MemoryBlock* startWriting()
@@ -66,7 +66,7 @@ namespace ntlab
                 return &writeBlock;
 
             return nullptr;
-        };
+        }
 
         /**
          * Always call this after having finished writing to release the block for swapping and invoking the next
@@ -84,7 +84,7 @@ namespace ntlab
             else {
                 readerShouldSwapBlocks = true;
             }
-        };
+        }
 
         /**
          * This is called to indicate that the sink can now read a new data block. It doesn't have to use it
@@ -102,7 +102,7 @@ namespace ntlab
         {
             readBufferLock.lock();
             return readBlock;
-        };
+        }
 
         /** Called by the sink to indicate that it has finished reading */
         void finishedReading()
@@ -118,7 +118,7 @@ namespace ntlab
             }
 
             readBufferLock.unlock();
-        };
+        }
 
         /** For internal use only, don't change */
         int sinkIdx = -1;

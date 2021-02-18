@@ -38,10 +38,10 @@ namespace ntlab
         jassert (renderingTargets.size() == 0);
     }
 
-    void WindowOpenGLContext::setTopLevelParentComponent (juce::Component& topLevelComponent)
+    void WindowOpenGLContext::setTopLevelParentComponent (juce::Component& _topLevelComponent)
     {
-        this->topLevelComponent = &topLevelComponent;
-        openGLContext.attachTo (topLevelComponent);
+        this->topLevelComponent = &_topLevelComponent;
+        openGLContext.attachTo (_topLevelComponent);
     }
 
     void WindowOpenGLContext::detachTopLevelParentComponent ()

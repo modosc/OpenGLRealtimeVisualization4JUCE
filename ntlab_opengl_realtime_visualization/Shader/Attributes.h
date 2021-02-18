@@ -34,7 +34,7 @@ namespace ntlab
     class OpenGLAttributes
     {
     public:
-        virtual ~OpenGLAttributes () {};
+        virtual ~OpenGLAttributes () {}
 
         virtual void enable  (juce::OpenGLContext& openGLContext) = 0;
         virtual void disable (juce::OpenGLContext& openGLContext) = 0;

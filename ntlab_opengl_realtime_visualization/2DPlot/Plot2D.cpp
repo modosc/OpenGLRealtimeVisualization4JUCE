@@ -71,10 +71,12 @@ namespace ntlab
             windowOpenGLContext.executeOnGLThread (fillTempBufferYWithZeros);
         }
 
-        GLvoid* data =       (updatesAtFramerate) ? NULL           : tempRenderDataBuffer.data();
+        GLvoid* data =       (updatesAtFramerate) ? nullptr           : tempRenderDataBuffer.data();
         GLenum bufferUsage = (updatesAtFramerate) ? GL_STREAM_DRAW : GL_STATIC_DRAW;
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshadow-field"
         auto addGLBuffer = [this, data, bufferUsage] (juce::OpenGLContext &openGLContext)
+#pragma clang diagnostic pop
         {
             GLuint glBufferLocation;
             openGLContext.extensions.glGenBuffers (1, &glBufferLocation);
@@ -380,7 +382,7 @@ namespace ntlab
 
     void Plot2D::resizeLineGLBuffers ()
     {
-        GLvoid* data =       (updatesAtFramerate) ? NULL           : tempRenderDataBuffer.data();
+        GLvoid* data =       (updatesAtFramerate) ? nullptr           : tempRenderDataBuffer.data();
         GLenum bufferUsage = (updatesAtFramerate) ? GL_STREAM_DRAW : GL_STATIC_DRAW;
 
         auto resizeAllLineGLBuffers = [this, data, bufferUsage] (juce::OpenGLContext &openGLContext)

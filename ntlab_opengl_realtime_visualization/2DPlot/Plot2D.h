@@ -81,7 +81,7 @@ namespace ntlab
          */
         Plot2D (bool updateAtFramerate, WindowOpenGLContext& glContext, juce::Range<float> xValueRange, float xValueDelta, LogScaling xValueScaling = LogScaling::none);
 
-        ~Plot2D();
+        ~Plot2D() override;
 
         /**
          * Sets the number of lines displayed by the plot.
@@ -123,19 +123,19 @@ namespace ntlab
          * them holding number of expected y-values matching the x-value buffer passed before. After all lines
          * have been loaded a call to endFrame will signal that it's now safe to release your resources.
          */
-        virtual void beginFrame () {};
+        virtual void beginFrame () {}
 
         /**
          * Gets called for every line once per frame. It's expected to return a pointer to a buffer containing
          * the number of values passed to beginFrame. If a nullptr is returned, the line won't be drawn.
          */
-        virtual const float* getBufferForLine (int lineIdx) {return nullptr; };
+        virtual const float* getBufferForLine ([[maybe_unused]] int lineIdx) {return nullptr; }
 
         /**
          * This indicates that the buffers prepared for the data to be displayed in the current frame might now be
          * released or modified
          * */
-        virtual void endFrame() {};
+        virtual void endFrame() {}
 
         /**
          * This will set the x value base for all data lines to be plotted, both for updates at frame rate or y values
